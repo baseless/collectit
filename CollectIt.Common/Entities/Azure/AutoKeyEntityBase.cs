@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.WindowsAzure.Storage.Table;
 
-namespace CollectIt.Common
+namespace CollectIt.Common.Entities.Azure
 {
     public abstract class AutoKeyEntityBase : TableEntity
     {

@@ -73,8 +73,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutoKeyEntityBase.cs" />
-    <Compile Include="AzureTableService.cs" />
+    <Compile Include="Entities\Azure\AutoKeyEntityBase.cs" />
+    <Compile Include="Services\AzureTableService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -5,7 +5,7 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Table;
 
-namespace CollectIt.Common
+namespace CollectIt.Common.Services
 {
     /// <summary>
     /// Azure Table serviceclass
