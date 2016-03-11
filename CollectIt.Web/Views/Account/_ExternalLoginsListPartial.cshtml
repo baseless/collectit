@@ -19,7 +19,11 @@
             <div id="socialLoginList">
                 <p>
                     @foreach (AuthenticationDescription p in loginProviders) {
-                        <button type="submit" class="btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType</button>
+                        <button type="submit" class="btn btn-default" style="padding: 0px 10px 0px 0px !important; height: 40px;" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">
+                            @if (p.AuthenticationType.ToLower().Equals("facebook")) { <img src="~/Content/img/facebook-square.png" style="width: 38px; height: 38px; border-top-left-radius: 2px; border-bottom-left-radius: 2px;" alt="Log into facebook"/> }
+                            @if (p.AuthenticationType.ToLower().Equals("twitter")) { <img src="~/Content/img/twitter-square.png" style="width: 38px; height: 38px; border-top-left-radius: 2px; border-bottom-left-radius: 2px;" alt="Log into twitter" /> }
+                            @p.AuthenticationType
+                        </button>
                     }
                 </p>
             </div>

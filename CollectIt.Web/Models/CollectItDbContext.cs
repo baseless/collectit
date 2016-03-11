@@ -5,7 +5,7 @@ namespace CollectIt.Web.Models
 {
     public class CollectItDbContext : IdentityDbContext<CollectItUser>
     {
-        public CollectItDbContext() : base(RoleEnvironment.GetConfigurationSettingValue("SqlConnectionString"), throwIfV1Schema: false)
+        public CollectItDbContext() : base("DefaultSqlConnection", throwIfV1Schema: false)
         {
         }
 

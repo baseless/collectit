@@ -45,13 +45,13 @@ namespace CollectIt.Web
             //    clientId: "",
             //    clientSecret: "");
 
-            //app.UseTwitterAuthentication(
-            //   consumerKey: "",
-            //   consumerSecret: "");
+            app.UseTwitterAuthentication(
+               consumerKey: "g3eskO39EAXLGAOkCCOl1QpBm",
+               consumerSecret: "Q6P452672xcyp9SgPm5IkbfATYWLTBPz8fWuVpWnkF1qf2qf52");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "963572430395676",
-            //   appSecret: "b444f2a8cc4c132c1c3db89e8bc9cd31");
+            app.UseFacebookAuthentication(
+               appId: "963572430395676",
+               appSecret: "b444f2a8cc4c132c1c3db89e8bc9cd31");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
