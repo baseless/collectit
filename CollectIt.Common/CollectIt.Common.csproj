@@ -73,10 +73,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AzureBlobService.cs" />
-    <Compile Include="AzureEntityBase.cs" />
-    <Compile Include="AzureQueueService.cs" />
-    <Compile Include="AzureTableService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
