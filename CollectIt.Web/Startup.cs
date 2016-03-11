@@ -8,6 +8,7 @@ namespace CollectIt.Web
     {
         public void Configuration(IAppBuilder app)
         {
+            ConfigureInjection(app);
             ConfigureAuth(app);
         }
     }

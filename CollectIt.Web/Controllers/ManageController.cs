@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using CollectIt.Web.Models;
+using CollectIt.Web.Models.ViewModels;
 
 namespace CollectIt.Web.Controllers
 {
