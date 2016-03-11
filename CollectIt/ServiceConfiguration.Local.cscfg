@@ -3,18 +3,21 @@
   <Role name="CollectIt.Web">
     <Instances count="1" />
     <ConfigurationSettings>
+      <Setting name="AzureStorageConnString" value="UseDevelopmentStorage=true" />
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
     </ConfigurationSettings>
   </Role>
   <Role name="CollectIt.Worker">
     <Instances count="1" />
     <ConfigurationSettings>
+      <Setting name="AzureStorageConnString" value="UseDevelopmentStorage=true" />
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
     </ConfigurationSettings>
   </Role>
   <Role name="CollectIt.WCF">
     <Instances count="1" />
     <ConfigurationSettings>
+      <Setting name="AzureStorageConnString" value="UseDevelopmentStorage=true" />
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
     </ConfigurationSettings>
   </Role>

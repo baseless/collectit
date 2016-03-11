@@ -1,15 +1,19 @@
+using System;
 using System.Diagnostics;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+using CollectIt.Common.Services;
 using Microsoft.WindowsAzure.ServiceRuntime;
+using Microsoft.WindowsAzure.Storage.Table;
 
 namespace CollectIt.Worker
 {
     public class WorkerRole : RoleEntryPoint
     {
-        private readonly CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-        private readonly ManualResetEvent runCompleteEvent = new ManualResetEvent(false);
+        private readonly AzureTableService _tableService = new AzureTableService(RoleEnvironment.GetConfigurationSettingValue("AzureStorageConnString"));
+        private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
+        private readonly ManualResetEvent _runCompleteEvent = new ManualResetEvent(false);
 
         public override void Run()
         {
@@ -17,11 +21,11 @@ namespace CollectIt.Worker
 
             try
             {
-                this.RunAsync(this.cancellationTokenSource.Token).Wait();
+                this.RunAsync(this._cancellationTokenSource.Token).Wait();
             }
             finally
             {
-                this.runCompleteEvent.Set();
+                this._runCompleteEvent.Set();
             }
         }
 
@@ -44,8 +48,8 @@ namespace CollectIt.Worker
         {
             Trace.TraceInformation("CollectIt.Worker is stopping");
 
-            this.cancellationTokenSource.Cancel();
-            this.runCompleteEvent.WaitOne();
+            this._cancellationTokenSource.Cancel();
+            this._runCompleteEvent.WaitOne();
 
             base.OnStop();
 
@@ -57,8 +61,10 @@ namespace CollectIt.Worker
             // TODO: Replace the following with your own logic.
             while (!cancellationToken.IsCancellationRequested)
             {
-                Trace.TraceInformation("Working");
-                await Task.Delay(1000);
+                Trace.TraceInformation("Running..");
+                var baba = new TableEntity { PartitionKey = DateTime.Now.ToLongTimeString(), RowKey = DateTime.Now.ToLongTimeString() };
+                await _tableService.Insert(baba, "testTable");
+                await Task.Delay(1000, cancellationToken);
             }
         }
     }

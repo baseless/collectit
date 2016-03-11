@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Storage;
@@ -16,9 +17,9 @@ namespace CollectIt.Common.Services
 
         public enum InsertOption { MergeIfExist, ReplaceIfExist }
 
-        public AzureTableService(string accountName, string key)
+        public AzureTableService(string connectionString)
         {
-            var account = new CloudStorageAccount(new StorageCredentials(accountName, key), true);
+            var account = CloudStorageAccount.Parse(connectionString);
             _client = account.CreateCloudTableClient();
         }
 
@@ -73,7 +74,6 @@ namespace CollectIt.Common.Services
             var table = _client.GetTableReference(tableName);
             await table.CreateIfNotExistsAsync();
             return table;
-
         }
     }
 }

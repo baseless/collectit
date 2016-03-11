@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CollectIt.WCF.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="StorageName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">azurecloudlab</Value>
+    </Setting>
+    <Setting Name="StorageKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">5UUd5tJhXRJdsTMbsXMSZ1mt3/YOCYPSLnJmH8n6bKX2yv7u/7ajyWfKuE6Qbycoas8p6sw85Uo+XQxFxd/jOQ==</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
