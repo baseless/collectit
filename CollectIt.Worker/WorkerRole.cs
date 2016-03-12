@@ -62,8 +62,8 @@ namespace CollectIt.Worker
             while (!cancellationToken.IsCancellationRequested)
             {
                 Trace.TraceInformation("Running..");
-                var baba = new TableEntity { PartitionKey = DateTime.Now.ToLongTimeString(), RowKey = DateTime.Now.ToLongTimeString() };
-                await _tableService.Insert(baba, "testTable");
+                //var baba = new TableEntity { PartitionKey = DateTime.Now.ToLongTimeString(), RowKey = DateTime.Now.ToLongTimeString() };
+                //await _tableService.Insert(baba, "testTable");
                 await Task.Delay(1000, cancellationToken);
             }
         }

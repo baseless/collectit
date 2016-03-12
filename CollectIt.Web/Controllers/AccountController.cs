@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -10,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using CollectIt.Web.Models;
 using CollectIt.Web.Models.ViewModels;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace CollectIt.Web.Controllers
 {
@@ -21,6 +23,7 @@ namespace CollectIt.Web.Controllers
 
         public AccountController()
         {
+            
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
