@@ -108,6 +108,7 @@
     </Compile>
     <Compile Include="Contracts\Channel.cs" />
     <Compile Include="Contracts\RichChannel.cs" />
+    <Compile Include="Contracts\RSSItem.cs" />
     <Compile Include="StatusService.svc.cs">
       <DependentUpon>StatusService.svc</DependentUpon>
     </Compile>
