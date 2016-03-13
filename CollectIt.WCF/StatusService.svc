@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="CollectIt.WCF.StatusService" CodeBehind="StatusService.svc.cs" %>

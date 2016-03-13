@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ChannelService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:57725/ChannelService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:57725/ChannelService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:57725/ChannelService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/CollectIt.WCF.Contracts" />
+      <xsd:import schemaLocation="http://localhost:57725/ChannelService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IChannelService_AllChannels_InputMessage">
+    <wsdl:part name="parameters" element="tns:AllChannels" />
+  </wsdl:message>
+  <wsdl:message name="IChannelService_AllChannels_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AllChannelsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChannelService_SubscribedChannels_InputMessage">
+    <wsdl:part name="parameters" element="tns:SubscribedChannels" />
+  </wsdl:message>
+  <wsdl:message name="IChannelService_SubscribedChannels_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SubscribedChannelsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChannelService_Subscribe_InputMessage">
+    <wsdl:part name="parameters" element="tns:Subscribe" />
+  </wsdl:message>
+  <wsdl:message name="IChannelService_Subscribe_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SubscribeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChannelService_Unsubscribe_InputMessage">
+    <wsdl:part name="parameters" element="tns:Unsubscribe" />
+  </wsdl:message>
+  <wsdl:message name="IChannelService_Unsubscribe_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UnsubscribeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IChannelService">
+    <wsdl:operation name="AllChannels">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChannelService/AllChannels" message="tns:IChannelService_AllChannels_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChannelService/AllChannelsResponse" message="tns:IChannelService_AllChannels_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SubscribedChannels">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChannelService/SubscribedChannels" message="tns:IChannelService_SubscribedChannels_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChannelService/SubscribedChannelsResponse" message="tns:IChannelService_SubscribedChannels_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Subscribe">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChannelService/Subscribe" message="tns:IChannelService_Subscribe_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChannelService/SubscribeResponse" message="tns:IChannelService_Subscribe_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Unsubscribe">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChannelService/Unsubscribe" message="tns:IChannelService_Unsubscribe_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChannelService/UnsubscribeResponse" message="tns:IChannelService_Unsubscribe_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IChannelService" type="tns:IChannelService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AllChannels">
+      <soap:operation soapAction="http://tempuri.org/IChannelService/AllChannels" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubscribedChannels">
+      <soap:operation soapAction="http://tempuri.org/IChannelService/SubscribedChannels" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Subscribe">
+      <soap:operation soapAction="http://tempuri.org/IChannelService/Subscribe" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Unsubscribe">
+      <soap:operation soapAction="http://tempuri.org/IChannelService/Unsubscribe" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ChannelService">
+    <wsdl:port name="BasicHttpBinding_IChannelService" binding="tns:BasicHttpBinding_IChannelService">
+      <soap:address location="http://localhost:57725/ChannelService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

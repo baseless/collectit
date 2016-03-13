@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "CollectIt", "CollectIt\CollectIt.ccproj", "{12EB2701-A278-496F-9BDE-61ADCC9DC535}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectIt.Web", "CollectIt.Web\CollectIt.Web.csproj", "{1B15B5B3-8A6C-48D1-BBC5-D6944CBBF3C4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{47B0900C-6D8F-4706-9D14-D72D05F4D56F} = {47B0900C-6D8F-4706-9D14-D72D05F4D56F}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectIt.Worker", "CollectIt.Worker\CollectIt.Worker.csproj", "{F3010FD3-0446-4B19-A0FD-7F595908AF5A}"
 EndProject
