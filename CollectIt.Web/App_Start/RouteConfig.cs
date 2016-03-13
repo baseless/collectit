@@ -12,6 +12,11 @@ namespace CollectIt.Web
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.MapRoute(
+                name: "ManageSubscriptions",
+                url: "member/{action}/{partition}/{row}",
+                defaults: new { controller = "Member", action = "Manage", partition = UrlParameter.Optional, row = UrlParameter.Optional }
+            );
 
             routes.MapRoute(
                 name: "Default",

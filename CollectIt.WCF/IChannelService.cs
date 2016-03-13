@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Threading.Tasks;
 using CollectIt.WCF.Contracts;
 
 namespace CollectIt.WCF
@@ -12,15 +13,9 @@ namespace CollectIt.WCF
     public interface IChannelService
     {
         [OperationContract]
-        ICollection<RichChannel> AllChannels(string userId);
+        ICollection<ChannelContract> All(string userId);
 
         [OperationContract]
-        ICollection<Channel> SubscribedChannels(string userId);
-
-        [OperationContract]
-        void Subscribe(string userId, Channel channel, string[] filters);
-
-        [OperationContract]
-        void Unsubscribe(string userId, Channel channel);
+        ChannelContract Get(string userId, string partitionKey, string rowKey);
     }
 }

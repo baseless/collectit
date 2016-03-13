@@ -5,6 +5,6 @@ namespace CollectIt.Web.Models.ViewModels
 {
     public class MemberManageViewModel
     {
-        public ICollection<RichChannel> Channels { get; set; } 
+        public ICollection<ChannelContract> Channels { get; set; } 
     }
 }

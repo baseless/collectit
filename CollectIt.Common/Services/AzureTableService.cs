@@ -23,22 +23,43 @@ namespace CollectIt.Common.Services
             _client = account.CreateCloudTableClient();
         }
 
-        public async Task<TableResult> Delete(TableEntity entity, string tableName)
+        public TableResult Delete(TableEntity entity, string tableName)
         {
-            var table = await GetTable(tableName);
-            return await table.ExecuteAsync(TableOperation.Delete(entity));
+            var table = GetTable(tableName);
+            return table.Execute(TableOperation.Delete(entity));
         }
 
-        public async Task<T> Get<T>(string partitionKey, string rowKey, string tableName) where T : TableEntity
+        public TableResult Delete<T>(string partitionKey, string rowKey, string tableName) where T : TableEntity, new()
         {
-            var table = await GetTable(tableName);
-            var result = await table.ExecuteAsync(TableOperation.Retrieve<T>(partitionKey, rowKey));
-            return (T)result.Result;
+            var table = GetTable(tableName);
+            var entity = (T)table.Execute(TableOperation.Retrieve<T>(partitionKey, rowKey)).Result;
+            return table.Execute(TableOperation.Delete(entity));
         }
 
-        public async Task<TableResult> Insert(TableEntity entity, string tableName, InsertOption? option = null)
+        public bool Exists<T>(string partitionKey, string rowKey, string tableName) where T : TableEntity, new()
         {
-            var table = await GetTable(tableName);
+            var table = GetTable(tableName);
+            var query = new TableQuery<T>
+            {
+                FilterString = TableQuery.CombineFilters(
+                    TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, partitionKey),
+                    TableOperators.And,
+                    TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.Equal, rowKey))
+            };
+            var result = table.ExecuteQuery(query);
+            return result.Any();
+        }
+
+        public T Get<T>(string partitionKey, string rowKey, string tableName) where T : TableEntity
+        {
+            var table = GetTable(tableName);
+            var result = table.Execute(TableOperation.Retrieve<T>(partitionKey, rowKey));
+            return (T) result.Result;
+        }
+
+        public TableResult Insert(TableEntity entity, string tableName, InsertOption? option = null)
+        {
+            var table = GetTable(tableName);
             TableOperation operation;
             switch (option)
             {
@@ -46,7 +67,7 @@ namespace CollectIt.Common.Services
                 case InsertOption.ReplaceIfExist: operation = TableOperation.InsertOrReplace(entity); break;
                 case null: default: operation = TableOperation.Insert(entity); break;
             }
-            return await table.ExecuteAsync(operation);
+            return table.Execute(operation);
         }
 
         /// <summary>
@@ -56,10 +77,10 @@ namespace CollectIt.Common.Services
         /// <param name="partitionKeys">Which partition keys to include</param>
         /// <param name="tableName">The name of the azure table</param>
         /// <returns></returns>
-        public async Task<List<T>> ListAll<T>(string[] partitionKeys, string tableName) where T : TableEntity, new()
+        public List<T> ListByPartition<T>(string[] partitionKeys, string tableName) where T : TableEntity, new()
         {
             var result = new List<T>();
-            var table = await GetTable(tableName);
+            var table = GetTable(tableName);
             foreach (var partitionKey in partitionKeys)
             {
                 var selectQuery = new TableQuery<T>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, partitionKey.ToLower()));
@@ -69,10 +90,17 @@ namespace CollectIt.Common.Services
             return result;
         }
 
-        private async Task<CloudTable> GetTable(string tableName)
+        public List<T> All<T>(string tableName) where T : TableEntity, new()
+        {
+            var table = GetTable(tableName);
+            var selectQuery = new TableQuery<T>();
+            return table.ExecuteQuery(selectQuery).ToList();
+        }
+
+        private CloudTable GetTable(string tableName)
         {
             var table = _client.GetTableReference(tableName);
-            await table.CreateIfNotExistsAsync();
+            table.CreateIfNotExists();
             return table;
         }
     }

@@ -218,6 +218,7 @@
     <Compile Include="Models\Entities\CollectItUser.cs" />
     <Compile Include="Models\ViewModels\MemberManageViewModel.cs" />
     <Compile Include="Models\ViewModels\ManageViewModels.cs" />
+    <Compile Include="Models\ViewModels\SubscribeViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\ChannelService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -225,6 +226,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\StatusService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\SubscriptionService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -272,10 +278,7 @@
     <None Include="Service References\ChannelService\ChannelService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Service References\ChannelService\CollectIt.Web.ChannelService.Channel.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\ChannelService\CollectIt.Web.ChannelService.RichChannel.datasource">
+    <Content Include="Service References\ChannelService\CollectIt.Web.ChannelService.ChannelContract.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\StatusService\StatusService.disco" />
@@ -289,6 +292,16 @@
     <None Include="Service References\ChannelService\configuration91.svcinfo" />
     <None Include="Service References\ChannelService\configuration.svcinfo" />
     <None Include="Service References\ChannelService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Service References\SubscriptionService\CollectIt.Web.SubscriptionService.SubscriptionContract.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\SubscriptionService\SubscriptionService.disco" />
+    <None Include="Service References\SubscriptionService\configuration91.svcinfo" />
+    <None Include="Service References\SubscriptionService\configuration.svcinfo" />
+    <None Include="Service References\SubscriptionService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -333,6 +346,20 @@
     </None>
     <Content Include="Views\Member\Manage.cshtml" />
     <Content Include="Views\Member\Index.cshtml" />
+    <Content Include="Views\Member\Subscribe.cshtml" />
+    <None Include="Service References\SubscriptionService\SubscriptionService.wsdl" />
+    <None Include="Service References\SubscriptionService\SubscriptionService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SubscriptionService\SubscriptionService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SubscriptionService\SubscriptionService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SubscriptionService\SubscriptionService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -356,6 +383,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ChannelService\" />
     <WCFMetadataStorage Include="Service References\StatusService\" />
+    <WCFMetadataStorage Include="Service References\SubscriptionService\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

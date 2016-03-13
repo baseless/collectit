@@ -8,52 +8,32 @@
       <xsd:import schemaLocation="http://localhost:57725/ChannelService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IChannelService_AllChannels_InputMessage">
-    <wsdl:part name="parameters" element="tns:AllChannels" />
+  <wsdl:message name="IChannelService_All_InputMessage">
+    <wsdl:part name="parameters" element="tns:All" />
   </wsdl:message>
-  <wsdl:message name="IChannelService_AllChannels_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AllChannelsResponse" />
+  <wsdl:message name="IChannelService_All_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AllResponse" />
   </wsdl:message>
-  <wsdl:message name="IChannelService_SubscribedChannels_InputMessage">
-    <wsdl:part name="parameters" element="tns:SubscribedChannels" />
+  <wsdl:message name="IChannelService_Get_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get" />
   </wsdl:message>
-  <wsdl:message name="IChannelService_SubscribedChannels_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SubscribedChannelsResponse" />
-  </wsdl:message>
-  <wsdl:message name="IChannelService_Subscribe_InputMessage">
-    <wsdl:part name="parameters" element="tns:Subscribe" />
-  </wsdl:message>
-  <wsdl:message name="IChannelService_Subscribe_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SubscribeResponse" />
-  </wsdl:message>
-  <wsdl:message name="IChannelService_Unsubscribe_InputMessage">
-    <wsdl:part name="parameters" element="tns:Unsubscribe" />
-  </wsdl:message>
-  <wsdl:message name="IChannelService_Unsubscribe_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UnsubscribeResponse" />
+  <wsdl:message name="IChannelService_Get_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetResponse" />
   </wsdl:message>
   <wsdl:portType name="IChannelService">
-    <wsdl:operation name="AllChannels">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChannelService/AllChannels" message="tns:IChannelService_AllChannels_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChannelService/AllChannelsResponse" message="tns:IChannelService_AllChannels_OutputMessage" />
+    <wsdl:operation name="All">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChannelService/All" message="tns:IChannelService_All_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChannelService/AllResponse" message="tns:IChannelService_All_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="SubscribedChannels">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChannelService/SubscribedChannels" message="tns:IChannelService_SubscribedChannels_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChannelService/SubscribedChannelsResponse" message="tns:IChannelService_SubscribedChannels_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="Subscribe">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChannelService/Subscribe" message="tns:IChannelService_Subscribe_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChannelService/SubscribeResponse" message="tns:IChannelService_Subscribe_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="Unsubscribe">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChannelService/Unsubscribe" message="tns:IChannelService_Unsubscribe_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChannelService/UnsubscribeResponse" message="tns:IChannelService_Unsubscribe_OutputMessage" />
+    <wsdl:operation name="Get">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChannelService/Get" message="tns:IChannelService_Get_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChannelService/GetResponse" message="tns:IChannelService_Get_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IChannelService" type="tns:IChannelService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="AllChannels">
-      <soap:operation soapAction="http://tempuri.org/IChannelService/AllChannels" style="document" />
+    <wsdl:operation name="All">
+      <soap:operation soapAction="http://tempuri.org/IChannelService/All" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -61,26 +41,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SubscribedChannels">
-      <soap:operation soapAction="http://tempuri.org/IChannelService/SubscribedChannels" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Subscribe">
-      <soap:operation soapAction="http://tempuri.org/IChannelService/Subscribe" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Unsubscribe">
-      <soap:operation soapAction="http://tempuri.org/IChannelService/Unsubscribe" style="document" />
+    <wsdl:operation name="Get">
+      <soap:operation soapAction="http://tempuri.org/IChannelService/Get" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

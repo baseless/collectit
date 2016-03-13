@@ -1,36 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/CollectIt.WCF.Contracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/CollectIt.WCF.Contracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/CollectIt.WCF.Contracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/CollectIt.WCF.Contracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:57725/ChannelService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-  <xs:import schemaLocation="http://localhost:57725/ChannelService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:complexType name="ArrayOfRichChannel">
+  <xs:complexType name="ArrayOfChannelContract">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="RichChannel" nillable="true" type="tns:RichChannel" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ChannelContract" nillable="true" type="tns:ChannelContract" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfRichChannel" nillable="true" type="tns:ArrayOfRichChannel" />
-  <xs:complexType name="RichChannel">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:Channel">
-        <xs:sequence>
-          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Filters" nillable="true" type="q1:ArrayOfstring" />
-          <xs:element minOccurs="0" name="IsSubscribing" type="xs:boolean" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="RichChannel" nillable="true" type="tns:RichChannel" />
-  <xs:complexType name="Channel">
+  <xs:element name="ArrayOfChannelContract" nillable="true" type="tns:ArrayOfChannelContract" />
+  <xs:complexType name="ChannelContract">
     <xs:sequence>
-      <xs:element minOccurs="0" name="ChannelId" type="ser:guid" />
       <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Filters" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element minOccurs="0" name="IsSubscribing" type="xs:boolean" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartitionKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RowKey" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="Channel" nillable="true" type="tns:Channel" />
-  <xs:complexType name="ArrayOfChannel">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Channel" nillable="true" type="tns:Channel" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfChannel" nillable="true" type="tns:ArrayOfChannel" />
+  <xs:element name="ChannelContract" nillable="true" type="tns:ChannelContract" />
 </xs:schema>

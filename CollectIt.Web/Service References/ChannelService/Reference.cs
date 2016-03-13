@@ -15,15 +15,53 @@ namespace CollectIt.Web.ChannelService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="RichChannel", Namespace="http://schemas.datacontract.org/2004/07/CollectIt.WCF.Contracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ChannelContract", Namespace="http://schemas.datacontract.org/2004/07/CollectIt.WCF.Contracts")]
     [System.SerializableAttribute()]
-    public partial class RichChannel : CollectIt.Web.ChannelService.Channel {
+    public partial class ChannelContract : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string[] FiltersField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool IsSubscribingField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PartitionKeyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RowKeyField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string[] Filters {
@@ -50,62 +88,6 @@ namespace CollectIt.Web.ChannelService {
                 }
             }
         }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Channel", Namespace="http://schemas.datacontract.org/2004/07/CollectIt.WCF.Contracts")]
-    [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CollectIt.Web.ChannelService.RichChannel))]
-    public partial class Channel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid ChannelIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid ChannelId {
-            get {
-                return this.ChannelIdField;
-            }
-            set {
-                if ((this.ChannelIdField.Equals(value) != true)) {
-                    this.ChannelIdField = value;
-                    this.RaisePropertyChanged("ChannelId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string Name {
@@ -116,6 +98,32 @@ namespace CollectIt.Web.ChannelService {
                 if ((object.ReferenceEquals(this.NameField, value) != true)) {
                     this.NameField = value;
                     this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PartitionKey {
+            get {
+                return this.PartitionKeyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PartitionKeyField, value) != true)) {
+                    this.PartitionKeyField = value;
+                    this.RaisePropertyChanged("PartitionKey");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RowKey {
+            get {
+                return this.RowKeyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RowKeyField, value) != true)) {
+                    this.RowKeyField = value;
+                    this.RaisePropertyChanged("RowKey");
                 }
             }
         }
@@ -134,29 +142,17 @@ namespace CollectIt.Web.ChannelService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ChannelService.IChannelService")]
     public interface IChannelService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChannelService/AllChannels", ReplyAction="http://tempuri.org/IChannelService/AllChannelsResponse")]
-        CollectIt.Web.ChannelService.RichChannel[] AllChannels(string userId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChannelService/All", ReplyAction="http://tempuri.org/IChannelService/AllResponse")]
+        CollectIt.Web.ChannelService.ChannelContract[] All(string userId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChannelService/AllChannels", ReplyAction="http://tempuri.org/IChannelService/AllChannelsResponse")]
-        System.Threading.Tasks.Task<CollectIt.Web.ChannelService.RichChannel[]> AllChannelsAsync(string userId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChannelService/All", ReplyAction="http://tempuri.org/IChannelService/AllResponse")]
+        System.Threading.Tasks.Task<CollectIt.Web.ChannelService.ChannelContract[]> AllAsync(string userId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChannelService/SubscribedChannels", ReplyAction="http://tempuri.org/IChannelService/SubscribedChannelsResponse")]
-        CollectIt.Web.ChannelService.Channel[] SubscribedChannels(string userId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChannelService/Get", ReplyAction="http://tempuri.org/IChannelService/GetResponse")]
+        CollectIt.Web.ChannelService.ChannelContract Get(string userId, string partitionKey, string rowKey);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChannelService/SubscribedChannels", ReplyAction="http://tempuri.org/IChannelService/SubscribedChannelsResponse")]
-        System.Threading.Tasks.Task<CollectIt.Web.ChannelService.Channel[]> SubscribedChannelsAsync(string userId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChannelService/Subscribe", ReplyAction="http://tempuri.org/IChannelService/SubscribeResponse")]
-        void Subscribe(string userId, CollectIt.Web.ChannelService.Channel channel, string[] filters);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChannelService/Subscribe", ReplyAction="http://tempuri.org/IChannelService/SubscribeResponse")]
-        System.Threading.Tasks.Task SubscribeAsync(string userId, CollectIt.Web.ChannelService.Channel channel, string[] filters);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChannelService/Unsubscribe", ReplyAction="http://tempuri.org/IChannelService/UnsubscribeResponse")]
-        void Unsubscribe(string userId, CollectIt.Web.ChannelService.Channel channel);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChannelService/Unsubscribe", ReplyAction="http://tempuri.org/IChannelService/UnsubscribeResponse")]
-        System.Threading.Tasks.Task UnsubscribeAsync(string userId, CollectIt.Web.ChannelService.Channel channel);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChannelService/Get", ReplyAction="http://tempuri.org/IChannelService/GetResponse")]
+        System.Threading.Tasks.Task<CollectIt.Web.ChannelService.ChannelContract> GetAsync(string userId, string partitionKey, string rowKey);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -186,36 +182,20 @@ namespace CollectIt.Web.ChannelService {
                 base(binding, remoteAddress) {
         }
         
-        public CollectIt.Web.ChannelService.RichChannel[] AllChannels(string userId) {
-            return base.Channel.AllChannels(userId);
+        public CollectIt.Web.ChannelService.ChannelContract[] All(string userId) {
+            return base.Channel.All(userId);
         }
         
-        public System.Threading.Tasks.Task<CollectIt.Web.ChannelService.RichChannel[]> AllChannelsAsync(string userId) {
-            return base.Channel.AllChannelsAsync(userId);
+        public System.Threading.Tasks.Task<CollectIt.Web.ChannelService.ChannelContract[]> AllAsync(string userId) {
+            return base.Channel.AllAsync(userId);
         }
         
-        public CollectIt.Web.ChannelService.Channel[] SubscribedChannels(string userId) {
-            return base.Channel.SubscribedChannels(userId);
+        public CollectIt.Web.ChannelService.ChannelContract Get(string userId, string partitionKey, string rowKey) {
+            return base.Channel.Get(userId, partitionKey, rowKey);
         }
         
-        public System.Threading.Tasks.Task<CollectIt.Web.ChannelService.Channel[]> SubscribedChannelsAsync(string userId) {
-            return base.Channel.SubscribedChannelsAsync(userId);
-        }
-        
-        public void Subscribe(string userId, CollectIt.Web.ChannelService.Channel channel, string[] filters) {
-            base.Channel.Subscribe(userId, channel, filters);
-        }
-        
-        public System.Threading.Tasks.Task SubscribeAsync(string userId, CollectIt.Web.ChannelService.Channel channel, string[] filters) {
-            return base.Channel.SubscribeAsync(userId, channel, filters);
-        }
-        
-        public void Unsubscribe(string userId, CollectIt.Web.ChannelService.Channel channel) {
-            base.Channel.Unsubscribe(userId, channel);
-        }
-        
-        public System.Threading.Tasks.Task UnsubscribeAsync(string userId, CollectIt.Web.ChannelService.Channel channel) {
-            return base.Channel.UnsubscribeAsync(userId, channel);
+        public System.Threading.Tasks.Task<CollectIt.Web.ChannelService.ChannelContract> GetAsync(string userId, string partitionKey, string rowKey) {
+            return base.Channel.GetAsync(userId, partitionKey, rowKey);
         }
     }
 }
