@@ -100,6 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ChannelService.svc" />
+    <Content Include="ItemService.svc" />
     <Content Include="StatusService.svc" />
   </ItemGroup>
   <ItemGroup>
@@ -107,8 +108,13 @@
       <DependentUpon>ChannelService.svc</DependentUpon>
     </Compile>
     <Compile Include="Contracts\ChannelContract.cs" />
+    <Compile Include="Contracts\ItemContract.cs" />
     <Compile Include="Contracts\SubscriptionContract.cs" />
+    <Compile Include="IItemService.cs" />
     <Compile Include="ISubscriptionService.cs" />
+    <Compile Include="ItemService.svc.cs">
+      <DependentUpon>ItemService.svc</DependentUpon>
+    </Compile>
     <Compile Include="StatusService.svc.cs">
       <DependentUpon>StatusService.svc</DependentUpon>
     </Compile>

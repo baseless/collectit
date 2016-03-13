@@ -216,6 +216,7 @@
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\CollectItDbContext.cs" />
     <Compile Include="Models\Entities\CollectItUser.cs" />
+    <Compile Include="Models\ViewModels\MemberIndexViewModel.cs" />
     <Compile Include="Models\ViewModels\MemberManageViewModel.cs" />
     <Compile Include="Models\ViewModels\ManageViewModels.cs" />
     <Compile Include="Models\ViewModels\SubscribeViewModel.cs" />
