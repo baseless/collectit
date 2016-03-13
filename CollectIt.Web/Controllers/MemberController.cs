@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using System.Web.Mvc;
 using CollectIt.Web.ChannelService;
 using CollectIt.Web.Models.ViewModels;
 using CollectIt.Web.SubscriptionService;
@@ -44,10 +46,17 @@ namespace CollectIt.Web.Controllers
             return View(model);
         }
 
-        public ActionResult Unsubscribe()
+        [HttpPost, ActionName("Subscribe")]
+        public async Task<ActionResult> SubscribePost(SubscribeViewModel model, string partition, string row)
         {
-            
-            return View();
+            await _subscriptionClient.SubscribeAsync(User.Identity.Name, partition, row, model.Filters);
+            return RedirectToAction("Manage");
+        }
+
+        public async Task<ActionResult> Unsubscribe(string partition, string row)
+        {
+            await _subscriptionClient.UnsubscribeAsync(User.Identity.Name, partition, row);
+            return RedirectToAction("Manage");
         }
     }
 }

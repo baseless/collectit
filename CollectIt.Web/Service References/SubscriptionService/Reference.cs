@@ -23,7 +23,7 @@ namespace CollectIt.Web.SubscriptionService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] FiltersField;
+        private string FiltersField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PartitionKeyField;
@@ -45,7 +45,7 @@ namespace CollectIt.Web.SubscriptionService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] Filters {
+        public string Filters {
             get {
                 return this.FiltersField;
             }
@@ -117,16 +117,16 @@ namespace CollectIt.Web.SubscriptionService {
         System.Threading.Tasks.Task<CollectIt.Web.SubscriptionService.SubscriptionContract> GetAsync(string userId, string channelPartitionKey, string channelRowKey);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISubscriptionService/Subscribe", ReplyAction="http://tempuri.org/ISubscriptionService/SubscribeResponse")]
-        void Subscribe(string userId, string channelPartitionKey, string channelRowKey, string[] filters);
+        void Subscribe(string userId, string channelPartitionKey, string channelRowKey, string filters);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISubscriptionService/Subscribe", ReplyAction="http://tempuri.org/ISubscriptionService/SubscribeResponse")]
-        System.Threading.Tasks.Task SubscribeAsync(string userId, string channelPartitionKey, string channelRowKey, string[] filters);
+        System.Threading.Tasks.Task SubscribeAsync(string userId, string channelPartitionKey, string channelRowKey, string filters);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISubscriptionService/Unsubscribe", ReplyAction="http://tempuri.org/ISubscriptionService/UnsubscribeResponse")]
-        void Unsubscribe(string channelPartitionKey, string channelRowKey);
+        void Unsubscribe(string userId, string channelPartitionKey, string channelRowKey);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISubscriptionService/Unsubscribe", ReplyAction="http://tempuri.org/ISubscriptionService/UnsubscribeResponse")]
-        System.Threading.Tasks.Task UnsubscribeAsync(string channelPartitionKey, string channelRowKey);
+        System.Threading.Tasks.Task UnsubscribeAsync(string userId, string channelPartitionKey, string channelRowKey);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -164,20 +164,20 @@ namespace CollectIt.Web.SubscriptionService {
             return base.Channel.GetAsync(userId, channelPartitionKey, channelRowKey);
         }
         
-        public void Subscribe(string userId, string channelPartitionKey, string channelRowKey, string[] filters) {
+        public void Subscribe(string userId, string channelPartitionKey, string channelRowKey, string filters) {
             base.Channel.Subscribe(userId, channelPartitionKey, channelRowKey, filters);
         }
         
-        public System.Threading.Tasks.Task SubscribeAsync(string userId, string channelPartitionKey, string channelRowKey, string[] filters) {
+        public System.Threading.Tasks.Task SubscribeAsync(string userId, string channelPartitionKey, string channelRowKey, string filters) {
             return base.Channel.SubscribeAsync(userId, channelPartitionKey, channelRowKey, filters);
         }
         
-        public void Unsubscribe(string channelPartitionKey, string channelRowKey) {
-            base.Channel.Unsubscribe(channelPartitionKey, channelRowKey);
+        public void Unsubscribe(string userId, string channelPartitionKey, string channelRowKey) {
+            base.Channel.Unsubscribe(userId, channelPartitionKey, channelRowKey);
         }
         
-        public System.Threading.Tasks.Task UnsubscribeAsync(string channelPartitionKey, string channelRowKey) {
-            return base.Channel.UnsubscribeAsync(channelPartitionKey, channelRowKey);
+        public System.Threading.Tasks.Task UnsubscribeAsync(string userId, string channelPartitionKey, string channelRowKey) {
+            return base.Channel.UnsubscribeAsync(userId, channelPartitionKey, channelRowKey);
         }
     }
 }

@@ -275,9 +275,6 @@
     <None Include="Service References\ChannelService\ChannelService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ChannelService\ChannelService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Service References\ChannelService\CollectIt.Web.ChannelService.ChannelContract.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -355,9 +352,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\SubscriptionService\SubscriptionService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\SubscriptionService\SubscriptionService3.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

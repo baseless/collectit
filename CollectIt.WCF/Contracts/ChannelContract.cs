@@ -10,7 +10,7 @@ namespace CollectIt.WCF.Contracts
         [Required, DataMember]
         public bool IsSubscribing { get; set; }
         [DataMember]
-        public ICollection<string> Filters { get; set; }
+        public string Filters { get; set; }
         [Required]
         public string CategoryName { get; set; }
         [Required, DataMember]

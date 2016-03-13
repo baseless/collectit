@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using CollectIt.Common.Entities;
 using CollectIt.Common.Services;
 using CollectIt.WCF.Contracts;
@@ -12,7 +13,7 @@ namespace CollectIt.WCF
 
         public SubscriptionContract Get(string userId, string channelPartitionKey, string channelRowKey)
         {
-            var subscription = TableService.Get<Subscription>(Subscription.ToRowKey(channelPartitionKey, channelRowKey), Subscription.ToPartitionKey(userId), Subscription.TableName);
+            var subscription = TableService.Get<Subscription>(Subscription.ToPartitionKey(userId), Subscription.ToRowKey(channelPartitionKey, channelRowKey), Subscription.TableName);
             if(subscription == null)
                 return null;
             return new SubscriptionContract
@@ -24,15 +25,15 @@ namespace CollectIt.WCF
             };
         }
 
-        public void Subscribe(string userId, string channelPartitionKey, string channelRowKey, ICollection<string> filters)
+        public void Subscribe(string userId, string channelPartitionKey, string channelRowKey, string filters)
         {
             var subscription = new Subscription(userId, channelPartitionKey, channelRowKey) { Filters = filters };
             TableService.Insert(subscription, Subscription.TableName, AzureTableService.InsertOption.MergeIfExist);
         }
 
-        public void Unsubscribe(string partitionKey, string rowKey)
+        public void Unsubscribe(string userId, string channelPartitionKey, string channelRowKey)
         {
-            TableService.Delete<Subscription>(partitionKey, rowKey, Subscription.TableName);
+            TableService.Delete<Subscription>(Subscription.ToPartitionKey(userId), Subscription.ToRowKey(channelPartitionKey, channelRowKey), Subscription.TableName);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace CollectIt.WCF.Contracts
         [Required, DataMember]
         public string PartitionKey { get; set; }
         [DataMember]
-        public ICollection<string> Filters { get; set; }
+        public string Filters { get; set; }
         [Required, DataMember]
         public DateTime SubscribedDate { get; set; }
     }

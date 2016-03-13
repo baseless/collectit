@@ -26,7 +26,7 @@ namespace CollectIt.Web.ChannelService {
         private string DescriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] FiltersField;
+        private string FiltersField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool IsSubscribingField;
@@ -64,7 +64,7 @@ namespace CollectIt.Web.ChannelService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] Filters {
+        public string Filters {
             get {
                 return this.FiltersField;
             }
