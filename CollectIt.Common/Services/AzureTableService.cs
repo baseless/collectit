@@ -77,7 +77,7 @@ namespace CollectIt.Common.Services
         /// <param name="partitionKeys">Which partition keys to include</param>
         /// <param name="tableName">The name of the azure table</param>
         /// <returns></returns>
-        public List<T> ListByPartition<T>(string[] partitionKeys, string tableName) where T : TableEntity, new()
+        public ICollection<T> ListByPartition<T>(string[] partitionKeys, string tableName) where T : TableEntity, new()
         {
             var result = new List<T>();
             var table = GetTable(tableName);
@@ -90,11 +90,17 @@ namespace CollectIt.Common.Services
             return result;
         }
 
-        public List<T> All<T>(string tableName) where T : TableEntity, new()
+        public ICollection<T> All<T>(string tableName) where T : TableEntity, new()
         {
             var table = GetTable(tableName);
             var selectQuery = new TableQuery<T>();
             return table.ExecuteQuery(selectQuery).ToList();
+        }
+
+        public ICollection<T> Query<T>(string tableName, TableQuery<T> query) where T : TableEntity, new()
+        {
+            var table = GetTable(tableName);
+            return table.ExecuteQuery(query).ToList();
         }
 
         private CloudTable GetTable(string tableName)
