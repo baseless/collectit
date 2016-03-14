@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace CollectIt.Common.Services
 {
+
     public class SlugService
     {
         public static string ToSlug(string name)

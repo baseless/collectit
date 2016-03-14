@@ -1,0 +1,72 @@
+﻿@model CollectIt.Web.Models.ViewModels.MemberManageViewModel
+
+@{
+    ViewBag.Title = "Manage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Manage channels</h2>
+
+<div class="row">
+    <div class="col-lg-12">
+        <table class="table table-striped">
+            <tr>
+                <th style="width: 60px;">
+                    Status
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>Active filters</th>
+                <th></th>
+            </tr>
+
+            @foreach (var channel in Model.Channels)
+            {
+                <tr>
+                    <td>@if (channel.IsSubscribing)
+                        {
+                            <img src="~/Content/img/checkmark.png" style="width: 16px; height: 16px;" alt="You are subscribing to this channel!"/>
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => channel.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => channel.Description)
+                    </td>
+                    @if (channel.Filters != null)
+                    {
+                        <td>@string.Join(", ", channel.Filters)</td>
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
+                    <td>
+                        @if (channel.IsSubscribing)
+                        {
+                            @Html.ActionLink("Edit", "Subscribe", new { partition = channel.PartitionKey, row = channel.RowKey })
+                            <span>|</span>
+                            @Html.ActionLink("Unsubscribe", "Unsubscribe", new { partition = channel.PartitionKey, row = channel.RowKey })
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Subscribe", "Subscribe", new { partition = channel.PartitionKey, row = channel.RowKey })
+                        }
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+
+
+
+
+
