@@ -38,5 +38,7 @@ namespace CollectIt.Common.Entities
             }
             return null;
         }
+
+    
     }
 }
