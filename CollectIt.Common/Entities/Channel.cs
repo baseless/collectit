@@ -31,5 +31,6 @@ namespace CollectIt.Common.Entities
         public string Name { get; set; }
         [DataMember]
         public string Description { get; set; }
+
     }
 }

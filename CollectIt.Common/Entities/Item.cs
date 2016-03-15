@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Runtime.Serialization;
 using CollectIt.Common.Services;
 using Microsoft.WindowsAzure.Storage.Table;
@@ -15,7 +16,8 @@ namespace CollectIt.Common.Entities
         public Item(string channelPartitionKey, string channelRowKey)
         {
             PartitionKey = SlugService.ToSlug(channelPartitionKey + channelRowKey);
-            RowKey = DateTime.UtcNow.ToString("O");
+            RowKey = Stopwatch.GetTimestamp().ToString();
+            Debug.WriteLine("Is Highresol: " + Stopwatch.IsHighResolution);
         }
 
         public string Title { get; set; }
