@@ -23,7 +23,7 @@ namespace CollectIt.Worker
                         where elementLink != null
                         let elementTitle = item.Element("title")
                         where elementTitle != null
-                        select new Item
+                        select new Item(channel.PartitionKey, channel.RowKey)
                         {
                             Title = elementTitle.Value,
                             Description = elementDesc.Value,
