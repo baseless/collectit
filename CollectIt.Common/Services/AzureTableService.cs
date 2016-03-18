@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -55,6 +56,26 @@ namespace CollectIt.Common.Services
             var table = GetTable(tableName);
             var result = table.Execute(TableOperation.Retrieve<T>(partitionKey, rowKey));
             return (T) result.Result;
+        }
+
+        public ICollection<T> ByRowKey<T>(string rowKey, string tableName, int maxRows) where T : TableEntity, new()
+        {
+            var table = GetTable(tableName);
+            var query = new TableQuery<T>
+            {
+                FilterString = TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.Equal, rowKey)
+            };
+            return table.ExecuteQuery(query).Take(maxRows).ToList();
+        }
+
+        public ICollection<T> ByPartitionKey<T>(string partitionKey, string tableName, int maxRows) where T : TableEntity, new()
+        {
+            var table = GetTable(tableName);
+            var query = new TableQuery<T>
+            {
+                FilterString = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, partitionKey)
+            };
+            return table.ExecuteQuery(query).Take(maxRows).ToList();
         }
 
         public TableResult Insert(TableEntity entity, string tableName, InsertOption? option = null)

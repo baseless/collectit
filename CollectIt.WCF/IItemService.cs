@@ -10,9 +10,12 @@ namespace CollectIt.WCF
     public interface IItemService
     {
         [OperationContract]
-        ICollection<ItemContract> All();
+        ICollection<ItemContract> All(string userId);
 
         [OperationContract]
-        ICollection<ItemContract> Latest();
+        ICollection<ItemContract> Latest(string userId);
+
+        [OperationContract]
+        ICollection<ItemContract> Query(string userId, string searchString);
     }
 }

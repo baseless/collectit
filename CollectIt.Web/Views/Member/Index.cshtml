@@ -1,8 +1,37 @@
-﻿
+﻿@model CollectIt.Web.Models.ViewModels.MemberIndexViewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Your subscribed items, added to the server in the last 7 days (retrieved @Model.Items.Count results)</h2>
 
+<div class="row">
+    <div class="col-lg-12">
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th style="width: 30px">
+                    Link
+                </th>
+                <th>
+                    Content
+                </th>
+                <th>Published</th>
+            </tr>
+
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>@item.Title</td>
+                    <td><a href="@item.Link">Click here</a></td>
+                    <td>@Model.StripHtml(item.Description)</td>
+                    <td>@item.PublishedDate</td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

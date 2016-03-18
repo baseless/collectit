@@ -12,7 +12,7 @@ namespace CollectIt.Worker
 {
     public class RssFeedReader
     {
-        private AzureTableService _tableService => new AzureTableService(RoleEnvironment.GetConfigurationSettingValue("AzureStorageConnString"));
+        private static AzureTableService TableService => new AzureTableService(RoleEnvironment.GetConfigurationSettingValue("AzureStorageConnString"));
 
         // Read the specified channel
         public List<Item> ReadFeed(Channel channel, List<string> filters = null)
@@ -46,7 +46,7 @@ namespace CollectIt.Worker
                     channel.LastBuildDate = feedBuildDate;
 
                     // Update database
-                    _tableService.Insert(channel, Channel.TableName, AzureTableService.InsertOption.MergeIfExist);
+                    TableService.Insert(channel, Channel.TableName, AzureTableService.InsertOption.MergeIfExist);
 
                     Debug.WriteLine("The feed build date is newer than the stored date.. ");
                     return true;
@@ -75,7 +75,7 @@ namespace CollectIt.Worker
                         let elementLink = item.Element("link")
                         where elementLink != null
                         let elementTitle = item.Element("title")
-                        where elementTitle != null
+
                         select new Item(channel.PartitionKey, channel.RowKey)
                         {
                             Title = elementTitle.Value,

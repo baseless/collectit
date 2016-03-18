@@ -103,7 +103,7 @@ namespace CollectIt.Worker
             {
                 Description = "This is some shiiat!",
                 Url = "http://feeds.gawker.com/lifehacker/full",
-                LastBuildDate = DateTime.Parse("1998-01-01")
+                LastBuildDate = DateTime.Parse("2010-01-01")
             };
 
             // Insert a channel
@@ -111,21 +111,24 @@ namespace CollectIt.Worker
             {
                 Description = "Carpe diem!",
                 Url = "http://feeds.reuters.com/reuters/lifestyle?format=xml",
-                LastBuildDate = DateTime.Now
+                LastBuildDate = DateTime.Parse("2010-01-01")
             };
 
             // Insert a sub
             Subscription sub1 = new Subscription("123", chan1.PartitionKey, chan1.RowKey)
             {
-                Filters = "Markup,Money,FoodSaver"
+                Filters = "Markup,Money,FoodSaver,Travel,Food"
             };
 
-            Subscription sub2 = new Subscription("1234", chan2.PartitionKey, chan2.RowKey);
+            Subscription sub2 = new Subscription("1234", chan2.PartitionKey, chan2.RowKey)
+            {
+                Filters = "Travel,Food"
+            };
 
             _tableService.Insert(chan1, Channel.TableName, AzureTableService.InsertOption.MergeIfExist);
-            //_tableService.Insert(chan2, Channel.TableName, AzureTableService.InsertOption.MergeIfExist);
+            _tableService.Insert(chan2, Channel.TableName, AzureTableService.InsertOption.MergeIfExist);
             _tableService.Insert(sub1, Subscription.TableName, AzureTableService.InsertOption.MergeIfExist);
-            //_tableService.Insert(sub2, Subscription.TableName, AzureTableService.InsertOption.MergeIfExist);
+            _tableService.Insert(sub2, Subscription.TableName, AzureTableService.InsertOption.MergeIfExist);
         }
     }
 }
