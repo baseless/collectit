@@ -17,7 +17,6 @@ namespace CollectIt.Common.Entities
         {
             PartitionKey = SlugService.ToSlug(channelPartitionKey + channelRowKey);
             RowKey = Stopwatch.GetTimestamp().ToString();
-            Debug.WriteLine("Is Highresol: " + Stopwatch.IsHighResolution);
         }
 
         public string Title { get; set; }

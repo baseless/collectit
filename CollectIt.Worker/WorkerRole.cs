@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 using System.Net;
 using System.Threading;
@@ -75,8 +76,6 @@ namespace CollectIt.Worker
             if (subs.Count > 0)
                 Debug.WriteLine("FOUND SUBS: " + subs.Count);
 
-
-            // todo: bygg latest fetch etc
             foreach (var sub in subs)
             {
                 
@@ -85,7 +84,7 @@ namespace CollectIt.Worker
                     Channel.TableName);
 
                 // Get all items from sub depending if filters exist or not
-                var items = sub.Filters != null ? _feedReader.ReadFeedWithFilters(sub.FilterList, chan) : _feedReader.ReadFeed(chan);
+                var items = sub.Filters != null ? _feedReader.ReadFeed(chan, sub.FilterList) : _feedReader.ReadFeed(chan);
 
                 // Insert every item into tables
                 foreach (var i in items)
@@ -99,33 +98,34 @@ namespace CollectIt.Worker
 
         private void InsertTestData()
         {
-
             // Insert a channel
             Channel chan1 = new Channel(Channel.ChannelCategory.Technology, "Gawker Rss")
             {
                 Description = "This is some shiiat!",
-                Url = "http://feeds.gawker.com/lifehacker/full"
+                Url = "http://feeds.gawker.com/lifehacker/full",
+                LastBuildDate = DateTime.Parse("1998-01-01")
             };
 
             // Insert a channel
             Channel chan2 = new Channel(Channel.ChannelCategory.Misc, "Reuters LifeStyle")
             {
                 Description = "Carpe diem!",
-                Url = "http://feeds.reuters.com/reuters/lifestyle?format=xml"
+                Url = "http://feeds.reuters.com/reuters/lifestyle?format=xml",
+                LastBuildDate = DateTime.Now
             };
 
             // Insert a sub
             Subscription sub1 = new Subscription("123", chan1.PartitionKey, chan1.RowKey)
             {
-                Filters = "Boost,Budget,Bluetooth"
+                Filters = "Markup,Money,FoodSaver"
             };
 
             Subscription sub2 = new Subscription("1234", chan2.PartitionKey, chan2.RowKey);
 
             _tableService.Insert(chan1, Channel.TableName, AzureTableService.InsertOption.MergeIfExist);
-            _tableService.Insert(chan2, Channel.TableName, AzureTableService.InsertOption.MergeIfExist);
+            //_tableService.Insert(chan2, Channel.TableName, AzureTableService.InsertOption.MergeIfExist);
             _tableService.Insert(sub1, Subscription.TableName, AzureTableService.InsertOption.MergeIfExist);
-            _tableService.Insert(sub2, Subscription.TableName, AzureTableService.InsertOption.MergeIfExist);
+            //_tableService.Insert(sub2, Subscription.TableName, AzureTableService.InsertOption.MergeIfExist);
         }
     }
 }

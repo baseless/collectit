@@ -31,6 +31,9 @@ namespace CollectIt.Common.Entities
         public string Name { get; set; }
         [DataMember]
         public string Description { get; set; }
+        [DataMember]
+        // ReSharper disable once InconsistentNaming
+        public DateTime LastBuildDate { get; set; }
 
     }
 }
