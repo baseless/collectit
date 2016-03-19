@@ -94,6 +94,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Spatial, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -276,6 +277,19 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <None Include="Service References\ChannelService\ChannelService.disco" />
+    <Content Include="Service References\ChannelService\CollectIt.Web.ChannelService.ChannelContract.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\ChannelService\configuration91.svcinfo" />
+    <None Include="Service References\ChannelService\configuration.svcinfo" />
+    <None Include="Service References\ChannelService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Service References\ItemService\CollectIt.Web.ItemService.ItemContract.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\ChannelService\ChannelService.wsdl" />
     <None Include="Service References\ChannelService\ChannelService.xsd">
       <SubType>Designer</SubType>
@@ -286,12 +300,6 @@
     <None Include="Service References\ChannelService\ChannelService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Service References\ChannelService\CollectIt.Web.ChannelService.ChannelContract.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\ItemService\CollectIt.Web.ItemService.ItemContract.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Service References\ItemService\ItemService.wsdl" />
     <None Include="Service References\ItemService\ItemService.xsd">
       <SubType>Designer</SubType>
@@ -306,13 +314,6 @@
     <None Include="Service References\StatusService\configuration91.svcinfo" />
     <None Include="Service References\StatusService\configuration.svcinfo" />
     <None Include="Service References\StatusService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\ChannelService\ChannelService.disco" />
-    <None Include="Service References\ChannelService\configuration91.svcinfo" />
-    <None Include="Service References\ChannelService\configuration.svcinfo" />
-    <None Include="Service References\ChannelService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

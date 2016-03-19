@@ -76,6 +76,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Selectors" />
+    <Reference Include="System.identitymodel.services" />
     <Reference Include="System.Spatial, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Spatial.5.7.0\lib\net40\System.Spatial.dll</HintPath>
       <Private>True</Private>
@@ -115,6 +118,7 @@
     <Compile Include="ItemService.svc.cs">
       <DependentUpon>ItemService.svc</DependentUpon>
     </Compile>
+    <Compile Include="App_Code\Security\SiteValidator.cs" />
     <Compile Include="StatusService.svc.cs">
       <DependentUpon>StatusService.svc</DependentUpon>
     </Compile>

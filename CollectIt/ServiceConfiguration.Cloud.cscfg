@@ -3,22 +3,28 @@
   <Role name="CollectIt.Web">
     <Instances count="1" />
     <ConfigurationSettings>
-      <Setting name="AzureStorageConnString" value="DefaultEndpointsProtocol=https;AccountName=collectitstorage;AccountKey=8WbNAjY1Cn9t9nZ7NvvKk6gpRPDpvzxLTUm+cLEl2Lu4UMcOnkXKuVaJrQjS/5pXwkYwEO3BaFGSLdohoDU6iA==;BlobEndpoint=https://collectitstorage.blob.core.windows.net/;TableEndpoint=https://collectitstorage.table.core.windows.net/;QueueEndpoint=https://collectitstorage.queue.core.windows.net/;FileEndpoint=https://collectitstorage.file.core.windows.net/" />
-      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="AzureStorageConnString" value="DefaultEndpointsProtocol=https;AccountName=collectitstore;AccountKey=B4cq0IIv33O+CP92uCxekwNjpniHAak8NTngDVwlrSAdZZZFs6D+9R6nJNO22btkHjIxWquvXX4M/kau48XCcg==" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=collectitstore;AccountKey=B4cq0IIv33O+CP92uCxekwNjpniHAak8NTngDVwlrSAdZZZFs6D+9R6nJNO22btkHjIxWquvXX4M/kau48XCcg==" />
     </ConfigurationSettings>
+    <Certificates>
+      <Certificate name="CollectIt" thumbprint="AC0EEB104B8190796EAE77932193EA1554F2E788" thumbprintAlgorithm="sha1" />
+    </Certificates>
   </Role>
   <Role name="CollectIt.Worker">
     <Instances count="1" />
     <ConfigurationSettings>
-      <Setting name="AzureStorageConnString" value="DefaultEndpointsProtocol=https;AccountName=collectitstorage;AccountKey=8WbNAjY1Cn9t9nZ7NvvKk6gpRPDpvzxLTUm+cLEl2Lu4UMcOnkXKuVaJrQjS/5pXwkYwEO3BaFGSLdohoDU6iA==;BlobEndpoint=https://collectitstorage.blob.core.windows.net/;TableEndpoint=https://collectitstorage.table.core.windows.net/;QueueEndpoint=https://collectitstorage.queue.core.windows.net/;FileEndpoint=https://collectitstorage.file.core.windows.net/" />
-      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="AzureStorageConnString" value="DefaultEndpointsProtocol=https;AccountName=collectitstore;AccountKey=B4cq0IIv33O+CP92uCxekwNjpniHAak8NTngDVwlrSAdZZZFs6D+9R6nJNO22btkHjIxWquvXX4M/kau48XCcg==" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=collectitstore;AccountKey=B4cq0IIv33O+CP92uCxekwNjpniHAak8NTngDVwlrSAdZZZFs6D+9R6nJNO22btkHjIxWquvXX4M/kau48XCcg==" />
     </ConfigurationSettings>
   </Role>
   <Role name="CollectIt.WCF">
     <Instances count="1" />
     <ConfigurationSettings>
-      <Setting name="AzureStorageConnString" value="DefaultEndpointsProtocol=https;AccountName=collectitstorage;AccountKey=8WbNAjY1Cn9t9nZ7NvvKk6gpRPDpvzxLTUm+cLEl2Lu4UMcOnkXKuVaJrQjS/5pXwkYwEO3BaFGSLdohoDU6iA==;BlobEndpoint=https://collectitstorage.blob.core.windows.net/;TableEndpoint=https://collectitstorage.table.core.windows.net/;QueueEndpoint=https://collectitstorage.queue.core.windows.net/;FileEndpoint=https://collectitstorage.file.core.windows.net/" />
-      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="AzureStorageConnString" value="DefaultEndpointsProtocol=https;AccountName=collectitstore;AccountKey=B4cq0IIv33O+CP92uCxekwNjpniHAak8NTngDVwlrSAdZZZFs6D+9R6nJNO22btkHjIxWquvXX4M/kau48XCcg==" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=collectitstore;AccountKey=B4cq0IIv33O+CP92uCxekwNjpniHAak8NTngDVwlrSAdZZZFs6D+9R6nJNO22btkHjIxWquvXX4M/kau48XCcg==" />
     </ConfigurationSettings>
+    <Certificates>
+      <Certificate name="CollectIt" thumbprint="AC0EEB104B8190796EAE77932193EA1554F2E788" thumbprintAlgorithm="sha1" />
+    </Certificates>
   </Role>
 </ServiceConfiguration>

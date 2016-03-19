@@ -1,11 +1,11 @@
 ﻿using System.Linq;
+using System.ServiceModel.Security;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using CollectIt.Web.ChannelService;
 using CollectIt.Web.ItemService;
 using CollectIt.Web.Models.ViewModels;
 using CollectIt.Web.SubscriptionService;
-using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace CollectIt.Web.Controllers
 {
@@ -44,6 +44,9 @@ namespace CollectIt.Web.Controllers
 
         public ActionResult Manage()
         {
+            _channelClient.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode = X509CertificateValidationMode.None;
+            _channelClient.ClientCredentials.UserName.UserName = "fddf";
+            _channelClient.ClientCredentials.UserName.Password = "grg";
             var channels = _channelClient.All(User.Identity.Name);
             return View(new MemberManageViewModel {Channels = channels});
         }

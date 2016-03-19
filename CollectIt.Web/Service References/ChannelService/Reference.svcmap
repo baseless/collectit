@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="516fd707-fd3e-41b5-87b2-4528e7210f17" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="52a1483b-5184-4588-a648-b111a7e67fb0" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,11 +22,11 @@
     <MetadataSource Address="http://localhost:57725/ChannelService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ChannelService.wsdl" MetadataType="Wsdl" ID="6b59134f-56bb-474b-9e73-5bdf0ff12dc5" SourceId="1" SourceUrl="http://localhost:57725/ChannelService.svc?wsdl" />
-    <MetadataFile FileName="ChannelService.disco" MetadataType="Disco" ID="3be4af68-b226-4903-a564-27ecb401a16c" SourceId="1" SourceUrl="http://localhost:57725/ChannelService.svc?disco" />
-    <MetadataFile FileName="ChannelService.xsd" MetadataType="Schema" ID="2d07b59f-d082-423f-a5e8-6197b4e3da46" SourceId="1" SourceUrl="http://localhost:57725/ChannelService.svc?xsd=xsd2" />
-    <MetadataFile FileName="ChannelService1.xsd" MetadataType="Schema" ID="d3eb9023-79c4-4a0f-a64e-006d17ef27de" SourceId="1" SourceUrl="http://localhost:57725/ChannelService.svc?xsd=xsd1" />
-    <MetadataFile FileName="ChannelService2.xsd" MetadataType="Schema" ID="72277397-4351-425a-903b-d74ed468c411" SourceId="1" SourceUrl="http://localhost:57725/ChannelService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ChannelService.wsdl" MetadataType="Wsdl" ID="12f6a4c0-f5d8-44c8-824d-802271dca031" SourceId="1" SourceUrl="http://localhost:57725/ChannelService.svc?wsdl" />
+    <MetadataFile FileName="ChannelService.disco" MetadataType="Disco" ID="cdd57f74-fed5-4f10-80c7-6e3d2e8acd41" SourceId="1" SourceUrl="http://localhost:57725/ChannelService.svc?disco" />
+    <MetadataFile FileName="ChannelService.xsd" MetadataType="Schema" ID="321fb021-9b8f-46cc-becc-ed82725e3d75" SourceId="1" SourceUrl="http://localhost:57725/ChannelService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ChannelService1.xsd" MetadataType="Schema" ID="787a6a73-e002-41e2-a84a-710dfbc2ecff" SourceId="1" SourceUrl="http://localhost:57725/ChannelService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ChannelService2.xsd" MetadataType="Schema" ID="b5853695-09f3-448f-bdbd-511ea1a53647" SourceId="1" SourceUrl="http://localhost:57725/ChannelService.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
