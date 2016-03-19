@@ -117,12 +117,12 @@ namespace CollectIt.Worker
             // Insert a sub
             Subscription sub1 = new Subscription("123", chan1.PartitionKey, chan1.RowKey)
             {
-                Filters = "Markup,Money,FoodSaver,Travel,Food"
+                Filters = "Tax,Yahoo"
             };
 
             Subscription sub2 = new Subscription("1234", chan2.PartitionKey, chan2.RowKey)
             {
-                Filters = "Travel,Food"
+                Filters = "Brazil,U.S,Dog"
             };
 
             _tableService.Insert(chan1, Channel.TableName, AzureTableService.InsertOption.MergeIfExist);

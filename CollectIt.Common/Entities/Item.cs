@@ -31,6 +31,7 @@ namespace CollectIt.Common.Entities
 
         public string PublishedDate { get; set; }
 
+        
         public DateTime? GetPublishedDateTime()
         {
             DateTime publishedDate;
@@ -40,7 +41,7 @@ namespace CollectIt.Common.Entities
             }
             return null;
         }
-
+        
     
     }
 }

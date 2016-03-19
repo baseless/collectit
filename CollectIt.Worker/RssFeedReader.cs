@@ -18,7 +18,7 @@ namespace CollectIt.Worker
         public List<Item> ReadFeed(Channel channel, List<string> filters = null)
         {
             var rssFeed = XDocument.Load(channel.Url);
-
+            
             if (rssFeed.Equals(null))
             {
                 throw new ArgumentNullException();
@@ -33,13 +33,13 @@ namespace CollectIt.Worker
             return IsFeedBuildDateNewer(channel, rssFeed) ? GetItemsFromFeed(channel, rssFeed) : new List<Item>();
         }
 
-        public bool IsFeedBuildDateNewer(Channel channel, XDocument feed)
+        private bool IsFeedBuildDateNewer(Channel channel, XDocument feed)
         {
             // Check that lastBuildDate exist (it's optional in RSS)
             var xElement = feed.Root.Element("channel").Element("lastBuildDate");
             if (xElement != null)
             {
-                DateTime feedBuildDate = Rfc822ToDateTime(xElement.Value);
+                var feedBuildDate = Rfc822ToDateTime(xElement.Value);
                 // If feed is newest return true
                 if (channel.LastBuildDate < feedBuildDate)
                 {
@@ -61,12 +61,36 @@ namespace CollectIt.Worker
             return true;                         
         }
 
-        // Get new items from feed
-
-
-        public List<Item> GetItemsFromFeed(Channel channel, XDocument rssFeed)
+        private List<Item> GetItemsFromFeed(Channel channel, XDocument rssFeed)
         {
-            Debug.WriteLine("Getting items from feed..");
+            var items = ParseFeed(channel, rssFeed);
+
+            // Getting all items which belongs to the specified channel.
+            var allItemsInChannelPartition = TableService.ListByPartition<Item>(new string[] { items.ElementAtOrDefault<Item>(0).PartitionKey }, Item.TableName);
+            // If no items found, we will return the complete list of items.
+            if (allItemsInChannelPartition.Count <= 0)
+                return items.ToList();
+            Debug.WriteLine("Getting all items belonging to partition: " +
+                            allItemsInChannelPartition.ElementAtOrDefault(0).PartitionKey +
+                            " current number of items is: " + allItemsInChannelPartition.Count);
+            // Now we need to find out the latest published date of the items from the Item table.
+            var itemWithLatestPubDate = allItemsInChannelPartition.ElementAtOrDefault(0);
+            foreach (Item i in allItemsInChannelPartition.Where(i => Rfc822ToDateTime(itemWithLatestPubDate.PublishedDateRFC822) < Rfc822ToDateTime(i.PublishedDateRFC822)))
+            {
+                itemWithLatestPubDate = i;
+            }
+            Debug.WriteLine("The newest item in table is: " + itemWithLatestPubDate.RowKey);
+            // Now we sort out the items which are newer then the latest item in table
+            var listWithNewItems = items.Where(i => Rfc822ToDateTime(itemWithLatestPubDate.PublishedDateRFC822) < Rfc822ToDateTime(i.PublishedDateRFC822)).ToList();
+
+            Debug.WriteLine("Found " + listWithNewItems.Count + " items which were newer..");
+
+            return listWithNewItems;
+        }
+
+        private IEnumerable<Item> ParseFeed(Channel channel, XDocument rssFeed)
+        {
+            Debug.WriteLine("Parsing feed and collecting items...");
             var items = from item in rssFeed.Descendants("item")
                         let elementPubDate = item.Element("pubDate")
                         where elementPubDate != null
@@ -84,13 +108,11 @@ namespace CollectIt.Worker
                             PublishedDateRFC822 = elementPubDate.Value,
                             PublishedDate = Rfc822ToDateTimeParseableString(elementPubDate.Value)
                         };
-
-            return items.ToList();
-
+            return items;
         }
 
         // Filter feed and return only NEW items
-        public List<Item> FilterFeed(List<string> keywords, XDocument feed, Channel channel)
+        private List<Item> FilterFeed(List<string> keywords, XDocument feed, Channel channel)
         {
             Debug.WriteLine("Filtering items from feed..");
             // Filter out *items* and get only items with either Title or Desc containing any of the keywords.
@@ -103,7 +125,7 @@ namespace CollectIt.Worker
             return filteredItems;
         }
 
-
+        
         // Convert RSS-time (RFC822) to a DateTime object
         public string Rfc822ToDateTimeParseableString(string date)
         {
