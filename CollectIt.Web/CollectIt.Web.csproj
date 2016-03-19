@@ -276,6 +276,19 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <None Include="Service References\ChannelService\ChannelService.disco" />
+    <Content Include="Service References\ChannelService\CollectIt.Web.ChannelService.ChannelContract.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\ChannelService\configuration91.svcinfo" />
+    <None Include="Service References\ChannelService\configuration.svcinfo" />
+    <None Include="Service References\ChannelService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Service References\ItemService\CollectIt.Web.ItemService.ItemContract.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\ChannelService\ChannelService.wsdl" />
     <None Include="Service References\ChannelService\ChannelService.xsd">
       <SubType>Designer</SubType>
@@ -286,40 +299,17 @@
     <None Include="Service References\ChannelService\ChannelService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Service References\ChannelService\CollectIt.Web.ChannelService.ChannelContract.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\ItemService\CollectIt.Web.ItemService.ItemContract.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Service References\ItemService\ItemService.wsdl" />
-    <None Include="Service References\ItemService\ItemService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ItemService\ItemService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ItemService\ItemService2.xsd">
-      <SubType>Designer</SubType>
+    <None Include="Service References\ItemService\ItemService.disco" />
+    <None Include="Service References\ItemService\configuration91.svcinfo" />
+    <None Include="Service References\ItemService\configuration.svcinfo" />
+    <None Include="Service References\ItemService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Service References\StatusService\StatusService.disco" />
     <None Include="Service References\StatusService\configuration91.svcinfo" />
     <None Include="Service References\StatusService\configuration.svcinfo" />
     <None Include="Service References\StatusService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\ChannelService\ChannelService.disco" />
-    <None Include="Service References\ChannelService\configuration91.svcinfo" />
-    <None Include="Service References\ChannelService\configuration.svcinfo" />
-    <None Include="Service References\ChannelService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\ItemService\ItemService.disco" />
-    <None Include="Service References\ItemService\configuration91.svcinfo" />
-    <None Include="Service References\ItemService\configuration.svcinfo" />
-    <None Include="Service References\ItemService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -365,6 +355,20 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Member\Manage.cshtml" />
+    <Content Include="Views\Member\Index.cshtml" />
+    <Content Include="Views\Member\Subscribe.cshtml" />
+    <Content Include="Views\Member\Search.cshtml" />
+    <None Include="Service References\ItemService\ItemService.wsdl" />
+    <None Include="Service References\ItemService\ItemService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ItemService\ItemService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ItemService\ItemService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\StatusService\StatusService.wsdl" />
     <None Include="Service References\StatusService\StatusService.xsd">
       <SubType>Designer</SubType>
@@ -372,9 +376,6 @@
     <None Include="Service References\StatusService\StatusService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Views\Member\Manage.cshtml" />
-    <Content Include="Views\Member\Index.cshtml" />
-    <Content Include="Views\Member\Subscribe.cshtml" />
     <None Include="Service References\SubscriptionService\SubscriptionService.wsdl" />
     <None Include="Service References\SubscriptionService\SubscriptionService.xsd">
       <SubType>Designer</SubType>
@@ -385,7 +386,6 @@
     <None Include="Service References\SubscriptionService\SubscriptionService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Views\Member\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

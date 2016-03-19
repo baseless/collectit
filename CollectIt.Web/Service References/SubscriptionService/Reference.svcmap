@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="835c6c2b-6185-4c57-bee3-dd672e668911" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0ee0db21-5fe9-4cb8-9a5c-270103c567cb" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,11 +22,11 @@
     <MetadataSource Address="http://localhost:57725/SubscriptionService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="SubscriptionService.wsdl" MetadataType="Wsdl" ID="212ee734-f0ea-45e5-8df4-e727cfde10db" SourceId="1" SourceUrl="http://localhost:57725/SubscriptionService.svc?wsdl" />
-    <MetadataFile FileName="SubscriptionService.disco" MetadataType="Disco" ID="4412c975-fd24-4120-9372-d632c8b07a24" SourceId="1" SourceUrl="http://localhost:57725/SubscriptionService.svc?disco" />
-    <MetadataFile FileName="SubscriptionService.xsd" MetadataType="Schema" ID="4d09acdd-83a9-4dbc-aea5-8f344b0c175a" SourceId="1" SourceUrl="http://localhost:57725/SubscriptionService.svc?xsd=xsd1" />
-    <MetadataFile FileName="SubscriptionService1.xsd" MetadataType="Schema" ID="99e4bed7-fe31-4f42-977b-c853e13d1505" SourceId="1" SourceUrl="http://localhost:57725/SubscriptionService.svc?xsd=xsd0" />
-    <MetadataFile FileName="SubscriptionService2.xsd" MetadataType="Schema" ID="b355dfa6-29dc-4003-bf7a-1f5b7761e2ce" SourceId="1" SourceUrl="http://localhost:57725/SubscriptionService.svc?xsd=xsd2" />
+    <MetadataFile FileName="SubscriptionService.wsdl" MetadataType="Wsdl" ID="9ac82a29-2491-4c39-a10c-c065c8b74391" SourceId="1" SourceUrl="http://localhost:57725/SubscriptionService.svc?wsdl" />
+    <MetadataFile FileName="SubscriptionService.disco" MetadataType="Disco" ID="4b9ec5c3-5299-466c-8a27-df33c4db3879" SourceId="1" SourceUrl="http://localhost:57725/SubscriptionService.svc?disco" />
+    <MetadataFile FileName="SubscriptionService.xsd" MetadataType="Schema" ID="40d2da30-c349-4c0a-a22a-b11b47e4b70a" SourceId="1" SourceUrl="http://localhost:57725/SubscriptionService.svc?xsd=xsd1" />
+    <MetadataFile FileName="SubscriptionService1.xsd" MetadataType="Schema" ID="fa295a91-3c70-4ab2-b844-93e56c01daea" SourceId="1" SourceUrl="http://localhost:57725/SubscriptionService.svc?xsd=xsd0" />
+    <MetadataFile FileName="SubscriptionService2.xsd" MetadataType="Schema" ID="99bcbe86-a525-43c1-a27d-8ecb4bef837a" SourceId="1" SourceUrl="http://localhost:57725/SubscriptionService.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

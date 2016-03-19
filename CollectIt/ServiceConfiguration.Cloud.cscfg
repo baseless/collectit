@@ -6,6 +6,9 @@
       <Setting name="AzureStorageConnString" value="DefaultEndpointsProtocol=https;AccountName=collectitstore;AccountKey=B4cq0IIv33O+CP92uCxekwNjpniHAak8NTngDVwlrSAdZZZFs6D+9R6nJNO22btkHjIxWquvXX4M/kau48XCcg==" />
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=collectitstore;AccountKey=B4cq0IIv33O+CP92uCxekwNjpniHAak8NTngDVwlrSAdZZZFs6D+9R6nJNO22btkHjIxWquvXX4M/kau48XCcg==" />
     </ConfigurationSettings>
+    <Certificates>
+      <Certificate name="CollectIt" thumbprint="AC0EEB104B8190796EAE77932193EA1554F2E788" thumbprintAlgorithm="sha1" />
+    </Certificates>
   </Role>
   <Role name="CollectIt.Worker">
     <Instances count="1" />
@@ -20,5 +23,8 @@
       <Setting name="AzureStorageConnString" value="DefaultEndpointsProtocol=https;AccountName=collectitstore;AccountKey=B4cq0IIv33O+CP92uCxekwNjpniHAak8NTngDVwlrSAdZZZFs6D+9R6nJNO22btkHjIxWquvXX4M/kau48XCcg==" />
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=collectitstore;AccountKey=B4cq0IIv33O+CP92uCxekwNjpniHAak8NTngDVwlrSAdZZZFs6D+9R6nJNO22btkHjIxWquvXX4M/kau48XCcg==" />
     </ConfigurationSettings>
+    <Certificates>
+      <Certificate name="CollectIt" thumbprint="AC0EEB104B8190796EAE77932193EA1554F2E788" thumbprintAlgorithm="sha1" />
+    </Certificates>
   </Role>
 </ServiceConfiguration>

@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.IdentityModel.Selectors;
 
-namespace CollectIt.WCF.Authentication
+namespace CollectIt.WCF
 {
     public class SiteValidator : UserNamePasswordValidator
     {

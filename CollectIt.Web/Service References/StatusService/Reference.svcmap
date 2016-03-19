@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="771a2f3f-9015-4499-85a1-1b936e1c16e8" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="256d5b7e-aeda-4234-b78c-f9a6fdba9ab7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,10 +22,10 @@
     <MetadataSource Address="http://localhost:57725/StatusService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="StatusService.disco" MetadataType="Disco" ID="3f26ef83-3046-42fd-b848-672d8bcd9fa2" SourceId="1" SourceUrl="http://localhost:57725/StatusService.svc?disco" />
-    <MetadataFile FileName="StatusService.xsd" MetadataType="Schema" ID="c8affeb6-775f-4242-929f-5454f3f0d0df" SourceId="1" SourceUrl="http://localhost:57725/StatusService.svc?xsd=xsd1" />
-    <MetadataFile FileName="StatusService1.xsd" MetadataType="Schema" ID="24cd8029-ccbe-4fa0-81aa-171c46dda13d" SourceId="1" SourceUrl="http://localhost:57725/StatusService.svc?xsd=xsd0" />
-    <MetadataFile FileName="StatusService.wsdl" MetadataType="Wsdl" ID="34865eef-3b3e-421b-a686-a0efe28baefc" SourceId="1" SourceUrl="http://localhost:57725/StatusService.svc?wsdl" />
+    <MetadataFile FileName="StatusService.disco" MetadataType="Disco" ID="3105735b-f7b6-453c-927a-07298c4eb00b" SourceId="1" SourceUrl="http://localhost:57725/StatusService.svc?disco" />
+    <MetadataFile FileName="StatusService.xsd" MetadataType="Schema" ID="21e6a0e0-67e6-4f37-a4ae-9ddd303fabd3" SourceId="1" SourceUrl="http://localhost:57725/StatusService.svc?xsd=xsd1" />
+    <MetadataFile FileName="StatusService1.xsd" MetadataType="Schema" ID="c04fbad9-e123-42a1-94e0-1b0e0101e329" SourceId="1" SourceUrl="http://localhost:57725/StatusService.svc?xsd=xsd0" />
+    <MetadataFile FileName="StatusService.wsdl" MetadataType="Wsdl" ID="a05a94a5-e723-4a4d-b353-ae3aa0d1b6b2" SourceId="1" SourceUrl="http://localhost:57725/StatusService.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

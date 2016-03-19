@@ -15,6 +15,9 @@
     <Endpoints>
       <InputEndpoint name="Endpoint1" protocol="http" port="80" />
     </Endpoints>
+    <Certificates>
+      <Certificate name="CollectIt" storeLocation="CurrentUser" storeName="My" />
+    </Certificates>
   </WebRole>
   <WorkerRole name="CollectIt.Worker" vmsize="Small">
     <ConfigurationSettings>
@@ -37,5 +40,8 @@
     <Endpoints>
       <InputEndpoint name="Endpoint1" protocol="http" port="8080" />
     </Endpoints>
+    <Certificates>
+      <Certificate name="CollectIt" storeLocation="CurrentUser" storeName="My" />
+    </Certificates>
   </WebRole>
 </ServiceDefinition>
