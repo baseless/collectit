@@ -76,6 +76,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Selectors" />
+    <Reference Include="System.identitymodel.services" />
     <Reference Include="System.Spatial, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Spatial.5.7.0\lib\net40\System.Spatial.dll</HintPath>
       <Private>True</Private>
@@ -104,6 +107,7 @@
     <Content Include="StatusService.svc" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authentication\SiteValidator.cs" />
     <Compile Include="ChannelService.svc.cs">
       <DependentUpon>ChannelService.svc</DependentUpon>
     </Compile>
@@ -133,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
