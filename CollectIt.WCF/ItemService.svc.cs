@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -32,30 +33,36 @@ namespace CollectIt.WCF
 
         public ICollection<ItemContract> Latest(string userId)
         {
-            var words = GetSearchWords(userId).ToList();
-            var query = new TableQuery<Item>
+            var itemsResult = new List<ItemContract>();
+            var subscriptions = TableService.ByPartitionKey<Subscription>(Subscription.ToPartitionKey(userId), Subscription.TableName, 999);
+
+            foreach (var subscription in subscriptions)
             {
-                FilterString =
-                    TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.GreaterThanOrEqual,
-                        DateTime.UtcNow.AddDays(-14).ToString("u"))
-            };
+                var filters = subscription.FilterList;
 
-            var result = (from item in TableService.Query<Item>(Item.TableName, query)
-                select new ItemContract
+                var channelQuery = new TableQuery<Item>
                 {
-                    Title = item.Title,
-                    Link = item.Link,
-                    Description = item.Description,
-                    PublishedDateRFC822 = item.PublishedDateRFC822,
-                    PublishedDate = item.GetPublishedDateTime()
-                });
-            if (words.Count == 0)
-                return result.Take(MaxRows).ToList();
+                    FilterString = TableQuery.CombineFilters(
+                    TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, SlugService.ToSlug(subscription.ChannelPartitionKey + subscription.ChannelRowKey)),
+                    TableOperators.And,
+                    TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.GreaterThanOrEqual, DateTime.UtcNow.AddDays(-14).ToString("u")))
+                };
 
-            return result.Where(
-                    item => words.Any(word => item.Description.Contains(word) || item.Title.Contains(word)))
-                    .Take(MaxRows)
-                    .ToList();
+                itemsResult.AddRange((from item in TableService.Query<Item>(Item.TableName, channelQuery)
+                              select new ItemContract
+                              {
+                                  Title = item.Title,
+                                  Link = item.Link,
+                                  Description = item.Description,
+                                  PublishedDateRFC822 = item.PublishedDateRFC822,
+                                  PublishedDate = item.GetPublishedDateTime()
+                              }).Where(
+                                item => filters == null || filters.Count == 0  || filters.Any(filter => item.Description.Contains(filter) || item.Title.Contains(filter)))
+                                .Take(MaxRows)
+                                .ToList());
+            }
+
+            return itemsResult;
         }
 
         public ICollection<ItemContract> Query(string userId, string searchString)
@@ -73,13 +80,7 @@ namespace CollectIt.WCF
                         PublishedDate = item.GetPublishedDateTime()
                     }).Where(item => words.Count().Equals(0) || words.Any(word => item.Description.Contains(word) || item.Title.Contains(word))).Take(MaxRows).ToList();
         }
-
-        private IEnumerable<string> GetSearchWords(string userId)
-        {
-            var subscriptions = TableService.ByPartitionKey<Subscription>(Subscription.ToPartitionKey(userId), Subscription.TableName, 999);
-            return (from subscription in subscriptions where !string.IsNullOrEmpty(subscription.Filters) from filter in subscription.Filters.Split(',') select filter).ToList();
-        }
-
+        
         private static bool TryGetSearchWords(string searchString, out IList<string> words)
         {
             try
