@@ -11,6 +11,8 @@
     <ConfigurationSettings>
       <Setting name="AzureStorageConnString" />
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
+      <Setting name="WCFClientUser" />
+      <Setting name="WCFClientPassword" />
     </ConfigurationSettings>
     <Endpoints>
       <InputEndpoint name="Endpoint1" protocol="http" port="80" />

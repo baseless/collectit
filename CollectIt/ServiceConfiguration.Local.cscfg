@@ -5,6 +5,8 @@
     <ConfigurationSettings>
       <Setting name="AzureStorageConnString" value="UseDevelopmentStorage=true" />
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="WCFClientUser" value="CollectItSite" />
+      <Setting name="WCFClientPassword" value="7xYX4ITMYsVk9pvJaWAzDBjF8c5J8JeedSC5ol6z1LKvVvvkH9" />
     </ConfigurationSettings>
     <Certificates>
       <Certificate name="CollectIt" thumbprint="AC0EEB104B8190796EAE77932193EA1554F2E788" thumbprintAlgorithm="sha1" />
