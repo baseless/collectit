@@ -101,7 +101,7 @@ namespace CollectIt.Worker
             // Insert a channel
             Channel chan1 = new Channel(Channel.ChannelCategory.Technology, "Gawker Rss")
             {
-                Description = "This is some shiiat!",
+                Description = "Gawker lifehacker feed!",
                 Url = "http://feeds.gawker.com/lifehacker/full",
                 LastBuildDate = DateTime.Parse("2010-01-01")
             };
@@ -109,26 +109,85 @@ namespace CollectIt.Worker
             // Insert a channel
             Channel chan2 = new Channel(Channel.ChannelCategory.Misc, "Reuters LifeStyle")
             {
-                Description = "Carpe diem!",
+                Description = "Reuters lifestyle feed.",
                 Url = "http://feeds.reuters.com/reuters/lifestyle?format=xml",
                 LastBuildDate = DateTime.Parse("2010-01-01")
             };
 
-            // Insert a sub
-            Subscription sub1 = new Subscription("123", chan1.PartitionKey, chan1.RowKey)
+            // Insert a channel
+            Channel chan3 = new Channel(Channel.ChannelCategory.Misc, "BBC World")
             {
-                Filters = "Tax,Yahoo"
+                Description = "BBC world news!",
+                Url = "http://feeds.bbci.co.uk/news/world/rss.xml",
+                LastBuildDate = DateTime.Parse("2010-01-01")
             };
 
-            Subscription sub2 = new Subscription("1234", chan2.PartitionKey, chan2.RowKey)
+            // Insert a channel
+            Channel chan4 = new Channel(Channel.ChannelCategory.Misc, "BBC Top stories")
             {
-                Filters = "Brazil,U.S,Dog"
+                Description = "BBC top stories!",
+                Url = "http://feeds.bbci.co.uk/news/rss.xml",
+                LastBuildDate = DateTime.Parse("2010-01-01")
+            };
+
+            // Insert a channel
+            Channel chan5 = new Channel(Channel.ChannelCategory.Misc, "BBC Europe news")
+            {
+                Description = "BBC EU news!!",
+                Url = "http://feeds.bbci.co.uk/news/world/europe/rss.xml",
+                LastBuildDate = DateTime.Parse("2010-01-01")
+            };
+
+            // Insert a channel
+            Channel chan6 = new Channel(Channel.ChannelCategory.Food, "Telegraph food and drink")
+            {
+                Description = "Telegraph Food and drink rss",
+                Url = "http://www.telegraph.co.uk/foodanddrink/beer/rss",
+                LastBuildDate = DateTime.Parse("2010-01-01")
+            };
+
+            // Insert a channel
+            Channel chan7 = new Channel(Channel.ChannelCategory.Food, "Techcrunch")
+            {
+                Description = "Techcrunch tech feed",
+                Url = "http://feeds.feedburner.com/TechCrunch/",
+                LastBuildDate = DateTime.Parse("2010-01-01")
+            };
+
+            // Insert a sub
+            Subscription sub1 = new Subscription("daniel2ryhlese", chan7.PartitionKey, chan7.RowKey)
+            {
+
+            };
+
+            // Insert a sub
+            Subscription sub2 = new Subscription("daniel2ryhlese", chan3.PartitionKey, chan3.RowKey)
+            {
+
+            };
+
+            // Insert a sub
+            Subscription sub3 = new Subscription("testtestse", chan3.PartitionKey, chan3.RowKey)
+            {
+                Filters = "EU,Sweden"
+            };
+
+            Subscription sub4 = new Subscription("testtestse", chan7.PartitionKey, chan7.RowKey)
+            {
+
             };
 
             _tableService.Insert(chan1, Channel.TableName, AzureTableService.InsertOption.MergeIfExist);
             _tableService.Insert(chan2, Channel.TableName, AzureTableService.InsertOption.MergeIfExist);
+            _tableService.Insert(chan3, Channel.TableName, AzureTableService.InsertOption.MergeIfExist);
+            _tableService.Insert(chan4, Channel.TableName, AzureTableService.InsertOption.MergeIfExist);
+            _tableService.Insert(chan5, Channel.TableName, AzureTableService.InsertOption.MergeIfExist);
+            _tableService.Insert(chan6, Channel.TableName, AzureTableService.InsertOption.MergeIfExist);
+            _tableService.Insert(chan7, Channel.TableName, AzureTableService.InsertOption.MergeIfExist);
             _tableService.Insert(sub1, Subscription.TableName, AzureTableService.InsertOption.MergeIfExist);
             _tableService.Insert(sub2, Subscription.TableName, AzureTableService.InsertOption.MergeIfExist);
+            _tableService.Insert(sub3, Subscription.TableName, AzureTableService.InsertOption.MergeIfExist);
+            _tableService.Insert(sub4, Subscription.TableName, AzureTableService.InsertOption.MergeIfExist);
         }
     }
 }
