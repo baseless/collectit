@@ -40,7 +40,7 @@ namespace CollectIt.WCF
                         DateTime.UtcNow.AddDays(-14).ToString("u"))
             };
 
-            return (from item in TableService.Query<Item>(Item.TableName, query)
+            var result = (from item in TableService.Query<Item>(Item.TableName, query)
                 select new ItemContract
                 {
                     Title = item.Title,
@@ -48,7 +48,14 @@ namespace CollectIt.WCF
                     Description = item.Description,
                     PublishedDateRFC822 = item.PublishedDateRFC822,
                     PublishedDate = item.GetPublishedDateTime()
-                }).Where(item => words.Count().Equals(0) || words.Any(word => item.Description.Contains(word) || item.Title.Contains(word))).Take(MaxRows).ToList();
+                });
+            if (words.Count == 0)
+                return result.Take(MaxRows).ToList();
+
+            return result.Where(
+                    item => words.Any(word => item.Description.Contains(word) || item.Title.Contains(word)))
+                    .Take(MaxRows)
+                    .ToList();
         }
 
         public ICollection<ItemContract> Query(string userId, string searchString)

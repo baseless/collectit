@@ -35,7 +35,7 @@ namespace CollectIt.Common.Entities
         public DateTime? GetPublishedDateTime()
         {
             DateTime publishedDate;
-            if (!DateTime.TryParse(PublishedDate, out publishedDate))
+            if (DateTime.TryParse(PublishedDate, out publishedDate))
             {
                 return publishedDate;
             }

@@ -27,6 +27,8 @@ namespace CollectIt.WCF
 
         public void Subscribe(string userId, string channelPartitionKey, string channelRowKey, string filters)
         {
+            if (filters == null)
+                filters = "";
             var subscription = new Subscription(userId, channelPartitionKey, channelRowKey) { Filters = filters };
             TableService.Insert(subscription, Subscription.TableName, AzureTableService.InsertOption.MergeIfExist);
         }

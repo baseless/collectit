@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Runtime.Serialization;
 using CollectIt.Common.Entities;
 
@@ -22,18 +23,5 @@ namespace CollectIt.WCF.Contracts
 
         [DataMember]
         public DateTime? PublishedDate { get; set; }
-
-        public void MapFromItem(Item item)
-        {
-            Title = item.Title;
-            Link = item.Link;
-            Description = item.Description;
-            PublishedDateRFC822 = item.PublishedDateRFC822;
-            DateTime publishedDate;
-            if (!DateTime.TryParse(item.PublishedDate, out publishedDate))
-            {
-                PublishedDate = publishedDate;
-            }
-        }
     }
 }
